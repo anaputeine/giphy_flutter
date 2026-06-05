@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:giphy_flutter/domain/coordinator/gif_coordinator.dart';
-import '../l10n/app_localizations.dart';
+import 'package:giphy_flutter/domain/navigation/app_coordinator.dart';
+import '../../l10n/app_localizations.dart';
 import 'bloc/gif_cubit.dart';
 import 'bloc/gif_state.dart';
 import 'dart:async';
@@ -21,7 +21,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  late final GifCoordinator _gifCoordinator;
+  late final AppCoordinator _gifCoordinator;
   late final GifCubit _cubit;
 
   final _searchController = TextEditingController();

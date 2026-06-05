@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../domain/model/gif.dart';
+import '../../../domain/model/gif.dart';
 
 class GifState extends Equatable {
   final List<Gif> gifs;

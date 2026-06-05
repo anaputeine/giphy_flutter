@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
 import 'data/api/gif_api.dart';
-import 'data/coordinator/gif_coordinator_implementation.dart';
-import 'data/repository/network_gif_repository.dart';
-import 'domain/coordinator/gif_coordinator.dart';
+import 'presentation/navigation/app_coordinator_implementation.dart';
+import 'data/gif/repository/network_gif_repository.dart';
+import 'domain/navigation/app_coordinator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'domain/repository/gif_repository.dart';
@@ -27,8 +27,8 @@ void main() {
     create: (context) => networkGifRepository,
   );
 
-  final coordinatorProvider = RepositoryProvider<GifCoordinator>(
-    create: (_) => GifCoordinatorImpl(),
+  final coordinatorProvider = RepositoryProvider<AppCoordinator>(
+    create: (_) => AppCoordinatorImpl(),
   );
 
   runApp(

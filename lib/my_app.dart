@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giphy_flutter/presentation/search_page.dart';
+import 'package:giphy_flutter/presentation/search/search_page.dart';
 
 import 'l10n/app_localizations.dart';
 

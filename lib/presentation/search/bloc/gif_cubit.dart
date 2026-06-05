@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/model/gif.dart';
-import '../../domain/repository/gif_repository.dart';
+import '../../../domain/model/gif.dart';
+import '../../../domain/repository/gif_repository.dart';
 import 'gif_state.dart';
 
 class GifCubit extends Cubit<GifState> {
