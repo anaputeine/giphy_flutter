@@ -1,0 +1,9 @@
+{
+  "lang": "ru",
+  "imported": "Импортировано:",
+  "trending": "В тренде:",
+  "gifs": "GIF-файлы",
+  "searchGif": "Поиск GIF...",
+  "failedToLoad": "Не удалось загрузить",
+  "noGifsFound": "GIF-файлы не найдены"
+}
