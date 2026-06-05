@@ -14,9 +14,8 @@ class GifCubit extends Cubit<GifState> {
   int _offset = 0;
 
   GifCubit({
-    required GifRepository gifRepository,
-  }) : _gifRepository = gifRepository,
-        super(const GifState(
+    required this._gifRepository,
+  }) : super(const GifState(
         gifs: [],
         isLoading: false,
         isLoadingMore: false,
