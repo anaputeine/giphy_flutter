@@ -36,7 +36,7 @@ class _SearchPageState extends State<SearchPage> {
 
     _gifCoordinator = context.read();
     _cubit = context.read();
-    _cubit.loadGifs(lang: "en", query: "67");
+    _cubit.loadGifs(lang: "en", query: "");
     _searchController.addListener(_debounceSearch);
     _scrollController.addListener(_onScroll);
   }

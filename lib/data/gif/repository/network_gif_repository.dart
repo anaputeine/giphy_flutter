@@ -15,7 +15,11 @@ class NetworkGifRepository implements GifRepository {
     required int limit,
   }) async {
     query = query ?? "";
-    final response = await _gifApiClient.searchGifs(lang:lang, query: query, offset: offset, limit: limit);
+
+    final response = query.trim().isEmpty
+        ? await _gifApiClient.trendingGifs(lang: lang, query: query, offset: offset, limit: limit)
+        : await _gifApiClient.searchGifs(lang: lang, query: query, offset: offset, limit: limit);
+
     return response.data.map((gif) => gif.toGif()).toList();
   }
 }

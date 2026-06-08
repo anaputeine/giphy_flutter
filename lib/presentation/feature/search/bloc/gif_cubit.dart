@@ -16,7 +16,7 @@ class GifCubit extends Cubit<GifState> {
            isLoadingMore: false,
            isError: false,
            hasReachedEnd: false,
-           query: "67",
+           query: "",
            lang: 'en',
            offset: 0,
          ),
