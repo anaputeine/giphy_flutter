@@ -1,12 +1,11 @@
 import 'package:equatable/equatable.dart';
-import '../../../../domain/model/gif.dart';
+import '../../../../domain/gif/model/gif.dart';
 
 class GifState extends Equatable {
   final List<Gif> gifs;
   final bool isLoading;
   final bool isLoadingMore;
   final bool isError;
-  final bool hasInternet;
   final bool hasReachedEnd;
   final String query;
   final String lang;
@@ -18,7 +17,6 @@ class GifState extends Equatable {
     required this.isLoading,
     required this.isLoadingMore,
     required this.isError,
-    required this.hasInternet,
     required this.hasReachedEnd,
     required this.query,
     required this.lang,
@@ -30,7 +28,6 @@ class GifState extends Equatable {
     bool? isLoading,
     bool? isLoadingMore,
     bool? isError,
-    bool? hasInternet,
     bool? hasReachedEnd,
     String? query,
     String? lang,
@@ -40,7 +37,6 @@ class GifState extends Equatable {
     isLoading: isLoading ?? this.isLoading,
     isLoadingMore: isLoadingMore ?? this.isLoadingMore,
     isError: isError ?? this.isError,
-    hasInternet: hasInternet ?? this.hasInternet,
     hasReachedEnd: hasReachedEnd ?? this.hasReachedEnd,
     query: query ?? this.query,
     lang: lang ?? this.lang,
@@ -53,7 +49,6 @@ class GifState extends Equatable {
     isLoading,
     isLoadingMore,
     isError,
-    hasInternet,
     hasReachedEnd,
     query,
     lang,

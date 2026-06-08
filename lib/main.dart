@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-
+import 'package:giphy_flutter/presentation/app/bloc/app_cubit.dart';
 import 'data/api/gif_api.dart';
+import 'data/network/repository/network_connectivity_repository.dart';
 import 'presentation/navigation/app_coordinator_implementation.dart';
 import 'data/gif/repository/network_gif_repository.dart';
 import 'domain/navigation/app_coordinator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'domain/repository/gif_repository.dart';
-import 'my_app.dart';
+import 'domain/gif/repository/gif_repository.dart';
+import 'presentation/app/my_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,10 +36,15 @@ void main() {
     create: (_) => AppCoordinatorImpl(),
   );
 
+  final connectivityRepository = NetworkConnectivityRepository();
+  final connectivityCubitProvider = BlocProvider(
+    create: (context) => AppCubit(connectivityRepository),
+  );
+
   runApp(
     MultiRepositoryProvider(
       providers: [coordinatorProvider, gifRepositoryProvider],
-      child: const MyApp(),
+      child: MultiBlocProvider(providers: [connectivityCubitProvider], child: const MyApp()),
     ),
   );
 }

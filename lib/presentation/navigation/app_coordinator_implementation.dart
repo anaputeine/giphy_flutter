@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/navigation/app_coordinator.dart';
-import '../../domain/model/gif.dart';
+import '../../domain/gif/model/gif.dart';
 import '../feature/detail/detail_page.dart';
 
 class AppCoordinatorImpl implements AppCoordinator {

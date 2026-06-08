@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../domain/model/gif.dart';
+import '../../../domain/gif/model/gif.dart';
 import '../../../l10n/app_localizations.dart';
 
 class DetailPage extends StatelessWidget {

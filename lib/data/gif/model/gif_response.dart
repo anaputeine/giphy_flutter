@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../domain/model/gif.dart';
+import '../../../domain/gif/model/gif.dart';
 
 part 'gif_response.g.dart';
 

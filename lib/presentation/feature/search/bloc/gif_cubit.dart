@@ -1,15 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import '../../../../domain/model/gif.dart';
-import '../../../../domain/repository/gif_repository.dart';
+import '../../../../domain/gif/model/gif.dart';
+import '../../../../domain/gif/repository/gif_repository.dart';
 import 'gif_state.dart';
 
 class GifCubit extends Cubit<GifState> {
   final GifRepository _gifRepository;
-  StreamSubscription<InternetStatus>? _internetSubscription;
-
   GifCubit({
     required this._gifRepository,
   }) : super(
@@ -18,45 +15,17 @@ class GifCubit extends Cubit<GifState> {
            isLoading: false,
            isLoadingMore: false,
            isError: false,
-           hasInternet: true,
            hasReachedEnd: false,
            query: "67",
            lang: 'en',
            offset: 0,
          ),
-       ) {
-    _listenToInternet();
-  }
-
-  void _listenToInternet() {
-    _internetSubscription = InternetConnection().onStatusChange.listen((status) {
-      emit(
-        state.copyWith(
-          hasInternet: status == InternetStatus.connected,
-        ),
-      );
-    });
-  }
-
-  @override
-  Future<void> close() {
-    _internetSubscription?.cancel();
-    return super.close();
-  }
+       );
 
   Future<void> loadGifs({
     required String? query,
     required String lang,
   }) async {
-    if (!state.hasInternet) {
-      emit(
-        state.copyWith(
-          isError: true,
-        ),
-      );
-      return;
-    }
-
     emit(
       state.copyWith(
         query: query,
@@ -88,7 +57,7 @@ class GifCubit extends Cubit<GifState> {
   }
 
   Future<void> loadMore() async {
-    if (state.isLoadingMore || state.hasReachedEnd || !state.hasInternet) {
+    if (state.isLoadingMore || state.hasReachedEnd) {
       return;
     }
 

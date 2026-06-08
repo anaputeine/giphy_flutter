@@ -74,7 +74,7 @@ class _SearchPageState extends State<SearchPage> {
                   bottom: PreferredSize(
                     preferredSize: .fromHeight(24),
                     child: Padding(
-                      padding: .symmetric(horizontal: 12),
+                      padding: .all(12),
                       child: SearchBar(
                         controller: _searchController,
                         hintText: AppLocalizations.of(context)!.searchGif,
@@ -99,6 +99,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                       );
                     }
+                    /*
                     if (!state.hasInternet) {
                       return SliverToBoxAdapter(
                         child: SizedBox(
@@ -108,7 +109,7 @@ class _SearchPageState extends State<SearchPage> {
                           ),
                         ),
                       );
-                    }
+                    }*/
 
                     if (state.isError) {
                       return SliverToBoxAdapter(
