@@ -28,4 +28,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get noGifsFound => 'GIF-файлы не найдены';
+
+  @override
+  String get noInternetConnection => 'Нет подключения к интернету';
 }

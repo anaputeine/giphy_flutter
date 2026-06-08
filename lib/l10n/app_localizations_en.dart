@@ -28,4 +28,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noGifsFound => 'No GIFs found';
+
+  @override
+  String get noInternetConnection => 'No internet connection';
 }

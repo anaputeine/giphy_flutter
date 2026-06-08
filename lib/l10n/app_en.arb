@@ -5,5 +5,6 @@
   "gifs": "Gifs",
   "searchGif": "Search GIF...",
   "failedToLoad": "Failed to load",
-  "noGifsFound": "No GIFs found"
+  "noGifsFound": "No GIFs found",
+  "noInternetConnection": "No internet connection"
 }

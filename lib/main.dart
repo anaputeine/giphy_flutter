@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 
 import 'data/api/gif_api.dart';
 import 'presentation/navigation/app_coordinator_implementation.dart';
@@ -10,6 +11,9 @@ import 'domain/repository/gif_repository.dart';
 import 'my_app.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.landscapeLeft]);
+
   final gifDio = Dio(BaseOptions(baseUrl: 'https://api.giphy.com/v1/gifs'));
   gifDio.interceptors.add(
     LogInterceptor(

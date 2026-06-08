@@ -35,6 +35,8 @@ dependencies:
   equatable: ^2.0.8
   flutter_bloc: ^9.1.1
   shared_preferences: ^2.5.5
+  internet_connection_checker_plus: ^3.0.1
+  flash: ^3.1.0
 
   flutter_localizations:
     sdk: flutter
@@ -42,6 +44,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  connectivity_plus: ^7.1.1
 
 dev_dependencies:
   flutter_test:
@@ -78,8 +81,11 @@ flutter:
   generate: true
 
   # To add assets to your application, add an assets section, like this:
-assets:
-  - assets/gif_icon.jpg
+  assets:
+    - assets/gif_icon.jpg
+    - assets/no_internet.gif
+    - assets/empty.gif
+    - assets/error.gif
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
