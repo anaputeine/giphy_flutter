@@ -13,6 +13,7 @@ List<Gif> gifs = List.generate(
     importDateTime: "2008",
     trendingDateTime: "2008",
   ),
+
 );
 
 List<Gif> gifsDouble = [...gifs, ...gifs];
