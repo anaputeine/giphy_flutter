@@ -30,6 +30,8 @@ class GifCubit extends Cubit<GifState> {
       state.copyWith(
         query: query,
         lang: lang,
+        offset: 0,
+        hasReachedEnd: false,
         isLoading: true,
         isError: false,
       ),
