@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:giphy_flutter/presentation/app/bloc/app_cubit.dart';
-import 'package:giphy_flutter/presentation/feature/search/search_page.dart';
-
 import '../../l10n/app_localizations.dart';
 import '../navigation/app_router.dart';
 
