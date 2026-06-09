@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:giphy_flutter/presentation/app/bloc/app_cubit.dart';
-import 'fake_connectivity_repository.dart';
+import '../../../data/repository/fake_connectivity_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
 
 void main() {

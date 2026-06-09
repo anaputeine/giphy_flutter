@@ -5,8 +5,8 @@ List<Gif> gifs = List.generate(
   30,
       (i) => Gif(
     id: "$i",
-    title: "g",
-    url: "url",
+    title: "paper clip claps",
+    url: "assets/test.png",
     importDateTime: "2008",
     trendingDateTime: "2008",
   ),

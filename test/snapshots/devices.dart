@@ -1,4 +1,3 @@
-import 'package:domain/locale/model/app_language.dart';
 import 'package:flutter/widgets.dart';
 
 final class Device {
@@ -7,7 +6,8 @@ final class Device {
   final EdgeInsets safeArea;
   final double textScale;
   final bool isDarkMode;
-  final AppLanguage appLanguage;
+
+  final Locale locale;
 
   const Device({
     required this.size,
@@ -15,7 +15,8 @@ final class Device {
     this.safeArea = EdgeInsets.zero,
     this.textScale = 1.0,
     this.isDarkMode = false,
-    this.appLanguage = AppLanguage.en,
+
+    this.locale = const Locale('en'),
   });
 
   Device copyWith({
@@ -24,20 +25,22 @@ final class Device {
     EdgeInsets? safeArea,
     double? textScale,
     bool? isDarkMode,
-    AppLanguage? appLanguage,
-  }) => .new(
+    Locale? locale,
+  }) => Device(
     size: size ?? this.size,
     name: name ?? this.name,
     safeArea: safeArea ?? this.safeArea,
     textScale: textScale ?? this.textScale,
     isDarkMode: isDarkMode ?? this.isDarkMode,
-    appLanguage: appLanguage ?? this.appLanguage,
+    locale: locale ?? this.locale,
   );
 
   String get scenarioLabel => [
     name,
     isDarkMode ? 'dark' : 'light',
-    appLanguage.code,
+
+    locale.languageCode,
+
     if (textScale != 1.0) '${textScale}x',
   ].join('__');
 }
@@ -62,7 +65,11 @@ const _baseDevices = [
 
 final allScenarios = [
   ..._baseDevices,
-  ..._baseDevices.map((device) => device.copyWith(appLanguage: .lv)),
+  ..._baseDevices.map(
+    (device) => device.copyWith(
+      locale: const Locale('ru'),
+    ),
+  ),
   ..._baseDevices.map((device) => device.copyWith(isDarkMode: true)),
   ..._baseDevices.map((device) => device.copyWith(textScale: 1.6)),
 ];

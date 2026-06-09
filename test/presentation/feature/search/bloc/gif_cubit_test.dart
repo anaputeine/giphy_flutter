@@ -1,15 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:giphy_flutter/domain/gif/model/gif.dart';
 import 'package:giphy_flutter/presentation/feature/search/bloc/gif_cubit.dart';
-import 'fake_gif_repository.dart';
+import '../../../../data/repository/fake_gif_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
 
 List<Gif> gifs = List.generate(
   30,
   (i) => Gif(
     id: "$i",
-    title: "g",
-    url: "url",
+    title: "paper clip claps",
+    url: "assets/test.png",
     importDateTime: "2008",
     trendingDateTime: "2008",
   ),

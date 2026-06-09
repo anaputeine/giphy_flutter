@@ -18,41 +18,37 @@ class DetailPage extends StatelessWidget {
         builder: (context, orientation) {
           return orientation == Orientation.portrait
               ? ListView(
-                padding: const EdgeInsets.all(16),
-                children: [
-                  const SizedBox(height: 24),
+                  padding: const EdgeInsets.all(16),
+                  children: [
+                    const SizedBox(height: 24),
 
-                  Center(
-                    child: Image.network(
-                      gif.url,
-                      height: 300,
-                      fit: BoxFit.contain,
+                    Center(
+                      child: _buildGifImage(gif.url),
                     ),
-                  ),
 
-                  const SizedBox(height: 24),
+                    const SizedBox(height: 24),
 
-                  Text(
-                    gif.title,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
+                    Text(
+                      gif.title,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
 
-                  const SizedBox(height: 24),
+                    const SizedBox(height: 24),
 
-                  Text(
-                    '${AppLocalizations.of(context)!.imported} ${gif.importDateTime}',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
+                    Text(
+                      '${AppLocalizations.of(context)!.imported} ${gif.importDateTime}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
 
-                  const SizedBox(height: 8),
+                    const SizedBox(height: 8),
 
-                  Text(
-                    '${AppLocalizations.of(context)!.trending} ${gif.trendingDateTime}',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ],
-              )
+                    Text(
+                      '${AppLocalizations.of(context)!.trending} ${gif.trendingDateTime}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                )
               : ListView(
                   padding: const EdgeInsets.all(16),
                   children: [
@@ -62,11 +58,7 @@ class DetailPage extends StatelessWidget {
                         Column(
                           children: [
                             const SizedBox(height: 12),
-                            Image.network(
-                              gif.url,
-                              height: 300,
-                              fit: BoxFit.contain,
-                            ),
+                            _buildGifImage(gif.url),
                           ],
                         ),
                         const SizedBox(width: 24),
@@ -99,6 +91,22 @@ class DetailPage extends StatelessWidget {
                 );
         },
       ),
+    );
+  }
+
+  Widget _buildGifImage(String imagePath) {
+    if (imagePath.startsWith('assets/')) {
+      return Image.asset(
+        imagePath,
+        height: 300,
+        fit: BoxFit.contain,
+      );
+    }
+
+    return Image.network(
+      imagePath,
+      height: 300,
+      fit: BoxFit.contain,
     );
   }
 }

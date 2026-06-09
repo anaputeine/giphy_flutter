@@ -37,6 +37,7 @@ dependencies:
   shared_preferences: ^2.5.5
   internet_connection_checker_plus: ^3.0.1
   flash: ^3.1.0
+  alchemist: ^0.14.0
 
   flutter_localizations:
     sdk: flutter
@@ -83,7 +84,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/gif_icon.jpg
-    - assets/no_internet.gif
+    - assets/test.png
     - assets/empty.gif
     - assets/error.gif
   #   - images/a_dot_ham.jpeg

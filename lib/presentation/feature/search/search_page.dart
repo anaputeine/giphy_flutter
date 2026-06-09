@@ -99,17 +99,6 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                       );
                     }
-                    /*
-                    if (!state.hasInternet) {
-                      return SliverToBoxAdapter(
-                        child: SizedBox(
-                          height: 500,
-                          child: Center(
-                            child: Image.asset('assets/no_internet.gif'),
-                          ),
-                        ),
-                      );
-                    }*/
 
                     if (state.isError) {
                       return SliverToBoxAdapter(
@@ -123,7 +112,6 @@ class _SearchPageState extends State<SearchPage> {
                     }
 
                     final gifs = state.gifs;
-
                     if (gifs.isEmpty) {
                       return SliverToBoxAdapter(
                         child: SizedBox(
@@ -147,10 +135,7 @@ class _SearchPageState extends State<SearchPage> {
 
                         return GestureDetector(
                           onTap: () => _gifCoordinator.openGifDetails(context, gif),
-                          child: Image.network(
-                            gif.url,
-                            fit: BoxFit.cover,
-                          ),
+                          child: _buildGifImage(gif.url),
                         );
                       },
                     );
@@ -226,6 +211,20 @@ class _SearchPageState extends State<SearchPage> {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildGifImage(String imagePath) {
+    if (imagePath.startsWith('assets/')) {
+      return Image.asset(
+        imagePath,
+        fit: BoxFit.cover,
+      );
+    }
+
+    return Image.network(
+      imagePath,
+      fit: BoxFit.cover,
     );
   }
 }
