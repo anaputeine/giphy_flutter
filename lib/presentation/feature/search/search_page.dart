@@ -216,10 +216,7 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget _buildGifImage(String imagePath) {
     if (imagePath.startsWith('assets/')) {
-      return Image.asset(
-        imagePath,
-        fit: BoxFit.cover,
-      );
+      return Placeholder();
     }
 
     return Image.network(

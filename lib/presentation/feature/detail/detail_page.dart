@@ -96,11 +96,7 @@ class DetailPage extends StatelessWidget {
 
   Widget _buildGifImage(String imagePath) {
     if (imagePath.startsWith('assets/')) {
-      return Image.asset(
-        imagePath,
-        height: 300,
-        fit: BoxFit.contain,
-      );
+      return Placeholder();
     }
 
     return Image.network(
