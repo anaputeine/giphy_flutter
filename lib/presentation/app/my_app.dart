@@ -4,20 +4,21 @@ import 'package:giphy_flutter/presentation/app/bloc/app_cubit.dart';
 import 'package:giphy_flutter/presentation/feature/search/search_page.dart';
 
 import '../../l10n/app_localizations.dart';
+import '../navigation/app_router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouter,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SearchPage.withCubit(),
       builder: (_, child) {
         return BlocBuilder<AppCubit, bool>(
           builder: (context, hasInternet) {

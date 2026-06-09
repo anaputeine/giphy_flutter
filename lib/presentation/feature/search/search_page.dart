@@ -22,7 +22,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  late final AppCoordinator _gifCoordinator;
+  late final AppCoordinator _appCoordinator;
   late final GifCubit _cubit;
 
   final _searchController = TextEditingController();
@@ -34,7 +34,7 @@ class _SearchPageState extends State<SearchPage> {
   void initState() {
     super.initState();
 
-    _gifCoordinator = context.read();
+    _appCoordinator = context.read();
     _cubit = context.read();
     _cubit.loadGifs(lang: "en", query: "");
     _searchController.addListener(_debounceSearch);
@@ -134,7 +134,7 @@ class _SearchPageState extends State<SearchPage> {
                         final gif = gifs[index];
 
                         return GestureDetector(
-                          onTap: () => _gifCoordinator.openGifDetails(context, gif),
+                          onTap: () => _appCoordinator.openGifDetails(gif),
                           child: _buildGifImage(gif.url),
                         );
                       },

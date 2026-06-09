@@ -1,17 +1,13 @@
-import 'package:flutter/material.dart';
-
 import '../../domain/navigation/app_coordinator.dart';
 import '../../domain/gif/model/gif.dart';
-import '../feature/detail/detail_page.dart';
+import 'app_router.dart';
 
 class AppCoordinatorImpl implements AppCoordinator {
   @override
-  void openGifDetails(BuildContext context, Gif gif) {
-    Navigator.of(context).push(
-
-      MaterialPageRoute(
-        builder: (_) => DetailPage(gif: gif),
-      ),
+  void openGifDetails(Gif gif) {
+    appRouter.pushNamed(
+      'detail',
+      extra: gif,
     );
   }
 }
