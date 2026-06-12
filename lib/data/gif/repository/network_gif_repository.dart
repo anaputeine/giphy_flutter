@@ -5,9 +5,14 @@ import 'package:giphy_flutter/domain/gif/repository/gif_repository.dart';
 
 class NetworkGifRepository implements GifRepository {
   final GifApiClient _gifApiClient;
-  final FbService _fbService = FbService();
+  final FbService _fbService;
 
-  NetworkGifRepository(this._gifApiClient);
+  NetworkGifRepository({
+    required this._gifApiClient,
+    required this._fbService,
+  });
+
+  static const _usingFirebase = bool.fromEnvironment("usingFirebase");
 
   @override
   Future<List<Gif>> getGifs({
@@ -16,15 +21,20 @@ class NetworkGifRepository implements GifRepository {
     required int offset,
     required int limit,
   }) async {
-    /*query = query ?? "";
+    if (!_usingFirebase) {
+      print("<<<<<<<<<<<<<<<<<<    currently using: api");
+      query = query ?? "";
 
-    final response = query.trim().isEmpty
-        ? await _gifApiClient.trendingGifs(lang: lang, query: query, offset: offset, limit: limit)
-        : await _gifApiClient.searchGifs(lang: lang, query: query, offset: offset, limit: limit);
+      final response = query.trim().isEmpty
+          ? await _gifApiClient.trendingGifs(lang: lang, query: query, offset: offset, limit: limit)
+          : await _gifApiClient.searchGifs(lang: lang, query: query, offset: offset, limit: limit);
 
-    return response.data.map((gif) => gif.toGif()).toList();*/
-    print('network repository - this actually runs!');
-    final response = await _fbService.getFirebaseGifs();
-    return Future.value(response);
+      return response.data.map((gif) => gif.toGif()).toList();
+    } else {
+      print("<<<<<<<<<<<<<<<<<<    currently using: firebase");
+      final responses = await _fbService.getFirebaseGifs();
+
+      return responses.map((response) => response.toGif()).toList();
+    }
   }
 }
