@@ -1,28 +1,29 @@
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:giphy_flutter/domain/navigation/app_coordinator.dart';
+import '../../../domain/gif/model/gif.dart';
 import '../../../l10n/app_localizations.dart';
 import 'bloc/gif_cubit.dart';
 import 'bloc/gif_state.dart';
 import 'dart:async';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  final void Function(Gif) openGifDetails;
+
+  const SearchPage({super.key, required this.openGifDetails});
 
   @override
   State<StatefulWidget> createState() => _SearchPageState();
 
-  static Widget withCubit() => BlocProvider(
+  static Widget withCubit({required Function(Gif) func}) => BlocProvider(
     create: (context) => GifCubit(
       gifRepository: context.read(),
     ),
-    child: const SearchPage(),
+    child: SearchPage(openGifDetails: func),
   );
 }
 
 class _SearchPageState extends State<SearchPage> {
-  late final AppCoordinator _appCoordinator;
   late final GifCubit _cubit;
 
   final _searchController = TextEditingController();
@@ -34,7 +35,6 @@ class _SearchPageState extends State<SearchPage> {
   void initState() {
     super.initState();
 
-    _appCoordinator = context.read();
     _cubit = context.read();
     _cubit.loadGifs(lang: "en", query: "");
     _searchController.addListener(_debounceSearch);
@@ -134,7 +134,7 @@ class _SearchPageState extends State<SearchPage> {
                         final gif = gifs[index];
 
                         return GestureDetector(
-                          onTap: () => _appCoordinator.openGifDetails(gif),
+                          onTap: () => widget.openGifDetails(gif),//_appCoordinator.openGifDetails(gif),
                           child: _buildGifImage(gif.url),
                         );
                       },

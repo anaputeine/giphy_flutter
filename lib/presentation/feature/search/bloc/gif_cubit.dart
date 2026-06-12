@@ -87,6 +87,7 @@ class GifCubit extends Cubit<GifState> {
   }
 
   Future<List<Gif>> _fetchPage() {
+    print('cubit - this actually runs!');
     return _gifRepository.getGifs(
       lang: state.lang,
       query: state.query,

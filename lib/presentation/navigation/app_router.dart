@@ -15,7 +15,12 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.search,
       name: 'search',
-      builder: (context, state) => SearchPage.withCubit(),
+      builder: (context, state) => SearchPage.withCubit(
+        func: (Gif gif) => context.push(
+          'detail',
+          extra: gif,
+        ),
+      ),
     ),
     GoRoute(
       path: AppRoutes.detail,

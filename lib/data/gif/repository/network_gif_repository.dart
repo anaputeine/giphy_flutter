@@ -1,9 +1,11 @@
-import 'package:giphy_flutter/data/api/gif_api.dart';
+import 'package:giphy_flutter/data/firebase/service/fb_service.dart';
+import 'package:giphy_flutter/data/gif/api/gif_api.dart';
 import 'package:giphy_flutter/domain/gif/model/gif.dart';
 import 'package:giphy_flutter/domain/gif/repository/gif_repository.dart';
 
 class NetworkGifRepository implements GifRepository {
   final GifApiClient _gifApiClient;
+  final FbService _fbService = FbService();
 
   NetworkGifRepository(this._gifApiClient);
 
@@ -14,12 +16,16 @@ class NetworkGifRepository implements GifRepository {
     required int offset,
     required int limit,
   }) async {
-    query = query ?? "";
+    /*query = query ?? "";
 
     final response = query.trim().isEmpty
         ? await _gifApiClient.trendingGifs(lang: lang, query: query, offset: offset, limit: limit)
         : await _gifApiClient.searchGifs(lang: lang, query: query, offset: offset, limit: limit);
 
-    return response.data.map((gif) => gif.toGif()).toList();
+    return response.data.map((gif) => gif.toGif()).toList();*/
+    print('network repository - this actually runs!');
+    await _fbService.seedGifs();
+    final response = await _fbService.getFirebaseGifs();
+    return Future.value(response);
   }
 }

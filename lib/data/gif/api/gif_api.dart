@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../gif/model/gif_response.dart';
+import '../model/gif_response.dart';
 
 class GifApiClient {
   final Dio _dio;

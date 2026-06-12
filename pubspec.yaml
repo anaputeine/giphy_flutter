@@ -47,6 +47,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   connectivity_plus: ^7.1.1
   go_router: ^17.3.0
+  firebase_core: ^4.10.0
+  cloud_firestore: ^6.5.0
+  firebase_storage: ^13.4.2
 
 dev_dependencies:
   flutter_test:
@@ -88,6 +91,7 @@ flutter:
     - assets/test.png
     - assets/empty.gif
     - assets/error.gif
+    - assets/cats_filtered.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
