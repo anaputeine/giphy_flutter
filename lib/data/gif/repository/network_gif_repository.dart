@@ -24,7 +24,6 @@ class NetworkGifRepository implements GifRepository {
 
     return response.data.map((gif) => gif.toGif()).toList();*/
     print('network repository - this actually runs!');
-    await _fbService.seedGifs();
     final response = await _fbService.getFirebaseGifs();
     return Future.value(response);
   }

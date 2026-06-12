@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "33754016417",
+    "project_id": "giphy-ce5ef",
+    "storage_bucket": "giphy-ce5ef.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33754016417:android:fac205827876cff5c09ee0",
+        "android_client_info": {
+          "package_name": "com.example.giphy_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQmknS5dAQpwUNAK74igEEfTxYaCEfvbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
